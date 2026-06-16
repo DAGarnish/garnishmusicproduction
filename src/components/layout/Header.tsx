@@ -21,6 +21,12 @@ export default function Header() {
 
   const getSubdomainUrl = (sub: string, defaultProdUrl: string) => {
     if (process.env.NEXT_PUBLIC_ROOT_DOMAIN) {
+      // Vercel DNS Workaround: If we are testing on a .vercel.app domain, we MUST use 
+      // path-based routing (/sites/bh) because Vercel blocks .vercel.app subdomains.
+      if (domain.includes("vercel.app")) {
+        return `${protocol}${domain}/sites/${sub}`;
+      }
+      // Otherwise, use standard subdomain routing (e.g., bh.localhost:3000 or bh.garnishmusicproduction.com)
       return `${protocol}${sub}.${domain}`;
     }
     return defaultProdUrl;
