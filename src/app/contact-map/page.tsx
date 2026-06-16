@@ -5,14 +5,10 @@ import Footer from "@/components/layout/Footer";
 import { MapPin } from "lucide-react";
 
 export default function ContactMapPage() {
-  const configuredDomain = process.env.NEXT_PUBLIC_ROOT_DOMAIN;
-  const vercelUrl = process.env.NEXT_PUBLIC_VERCEL_URL;
-  const domain = configuredDomain || vercelUrl || "thepickleballhq.net";
-  const protocol = process.env.NEXT_PUBLIC_PROTOCOL || (domain.includes("localhost") ? "http://" : "https://");
-
-  const eduConnectUrl = domain.includes("vercel.app") 
-    ? `${protocol}${domain}/connect/` // If vercel workaround is used, connect is global
-    : `${protocol}edu.${domain}/connect/`;
+  const isDev = process.env.NEXT_PUBLIC_APP_ENV === "dev";
+  const eduConnectUrl = isDev  
+    ? "http://edu.localhost:3000/connect/" 
+    : "https://edu.thepickleballhq.net/connect/";
 
   return (
     <div className="min-h-screen bg-white font-sans">

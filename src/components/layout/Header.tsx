@@ -16,21 +16,16 @@ const DropdownLink = ({ href = "#", children }: { href?: string, children: React
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  const configuredDomain = process.env.NEXT_PUBLIC_ROOT_DOMAIN;
-  const vercelUrl = process.env.NEXT_PUBLIC_VERCEL_URL;
-  const domain = configuredDomain || vercelUrl || "thepickleballhq.net";
-  const protocol = process.env.NEXT_PUBLIC_PROTOCOL || (domain.includes("localhost") ? "http://" : "https://");
+  // Auto-switch based on environment
+  const isDev = process.env.NEXT_PUBLIC_APP_ENV === "dev";
+  const domain = isDev ? "localhost:3000" : "thepickleballhq.net";
+  const protocol = isDev ? "http://" : "https://";
 
   const getSubdomainUrl = (sub: string, defaultProdUrl: string) => {
-    return `${protocol}${sub}.${domain}`;
+    return `${protocol}${sub}.${domain}/`;
   };
 
-  // If the user has defined a root domain in env, or we detected vercel, use it
-  const rootUrl = domain.includes("vercel.app") 
-    ? `${protocol}${domain}/`
-    : (configuredDomain 
-        ? `${protocol}${domain === "thepickleballhq.net" ? "www." + domain : domain}/`
-        : "https://www.thepickleballhq.net/");
+  const rootUrl = isDev ? "http://localhost:3000/" : "https://www.thepickleballhq.net/";
 
   return (
     <>

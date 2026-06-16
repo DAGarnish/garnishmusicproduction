@@ -16,9 +16,9 @@ export const config = {
 export async function proxy(req: NextRequest) {
   const url = req.nextUrl;
 
-  // Define our root domain (ensure you set this in your environment variables on Vercel)
-  // E.g. NEXT_PUBLIC_ROOT_DOMAIN="garnishmusicproduction.com"
-  const rootDomain = process.env.NEXT_PUBLIC_ROOT_DOMAIN || "localhost:3000";
+  // Switch between localhost for dev and thepickleballhq.net for prod
+  const isDev = process.env.NEXT_PUBLIC_APP_ENV === "dev";
+  const rootDomain = isDev ? "localhost:3000" : "thepickleballhq.net";
 
   // Get hostname of request (e.g. bh.garnishmusicproduction.com, bh.localhost:3000)
   const hostHeader = req.headers.get("host") || "";
