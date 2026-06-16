@@ -15,18 +15,21 @@ const DropdownLink = ({ href = "#", children }: { href?: string, children: React
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [rootUrl, setRootUrl] = useState("/");
 
-  React.useEffect(() => {
-    if (typeof window !== "undefined") {
-      const hostname = window.location.hostname;
-      if (hostname.includes("localhost")) {
-        setRootUrl("http://localhost:3000");
-      } else {
-        setRootUrl("https://www.garnishmusicproduction.com");
-      }
+  const protocol = process.env.NEXT_PUBLIC_PROTOCOL || "https://";
+  const domain = process.env.NEXT_PUBLIC_ROOT_DOMAIN || "garnishmusicproduction.com";
+
+  const getSubdomainUrl = (sub: string, defaultProdUrl: string) => {
+    if (process.env.NEXT_PUBLIC_ROOT_DOMAIN) {
+      return `${protocol}${sub}.${domain}`;
     }
-  }, []);
+    return defaultProdUrl;
+  };
+
+  // If the user has defined a root domain in env, use it (adding 'www.' if it's the main production domain)
+  const rootUrl = process.env.NEXT_PUBLIC_ROOT_DOMAIN 
+    ? `${protocol}${domain === "garnishmusicproduction.com" ? "www." + domain : domain}`
+    : "https://www.garnishmusicproduction.com";
 
   return (
     <>
@@ -69,7 +72,7 @@ export default function Header() {
                       <div className="grid grid-cols-2 gap-x-4 gap-y-4">
                         <DropdownLink href="https://edu.garnishmusicproduction.com/">World Home</DropdownLink>
                         <DropdownLink href="https://bcn.garnishmusicproduction.com/">BCN</DropdownLink>
-                        <DropdownLink href="http://bh.localhost:3000">BH</DropdownLink>
+                        <DropdownLink href={getSubdomainUrl("bh", "https://bh.garnishmusicproduction.com/")}>BH</DropdownLink>
                         <DropdownLink href="https://ber.garnishmusicproduction.com/">BER</DropdownLink>
                         <DropdownLink href="https://garnishmusicproduction.com/">LDN</DropdownLink>
                         <DropdownLink href="https://lis.garnishmusicproduction.com/">LIS</DropdownLink>

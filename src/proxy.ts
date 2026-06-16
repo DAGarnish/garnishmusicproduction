@@ -27,21 +27,27 @@ export async function proxy(req: NextRequest) {
   // Get the path (e.g. /, /about, /courses)
   const path = url.pathname;
 
-  // Check if it's a subdomain
+  // Check if it's the root domain
   if (
-    hostname.includes("---") ||
-    hostname.endsWith(`.vercel.app`) ||
     hostname === rootDomain ||
     hostname === `www.${rootDomain}` ||
     hostname === "localhost:3000"
   ) {
-    // This is the root domain (or a vercel preview deployment) -> route normally
     return NextResponse.next();
   }
 
-  // It IS a subdomain! (e.g. bh.garnishmusicproduction.com -> bh)
-  // We extract the subdomain name
-  const subdomain = hostname.replace(`.${rootDomain}`, "");
+  let subdomain = hostname.replace(`.${rootDomain}`, "");
+
+  // Handle vercel preview/custom domains (e.g. bh.garnishmusicproduction.vercel.app vs garnishmusicproduction.vercel.app)
+  if (hostname.endsWith(".vercel.app")) {
+    const parts = hostname.split(".");
+    // A standard vercel domain is 3 parts: project.vercel.app
+    if (parts.length <= 3 || hostname.includes("---")) {
+      return NextResponse.next();
+    }
+    // If it's a subdomain like bh.project.vercel.app, the first part is the subdomain
+    subdomain = parts[0];
+  }
 
   // Rewrite to the dynamically mapped route. 
   // For instance, if user visits bh.garnishmusicproduction.com/about 
