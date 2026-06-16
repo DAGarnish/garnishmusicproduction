@@ -1,0 +1,51 @@
+import { NextRequest, NextResponse } from "next/server";
+
+export const config = {
+  matcher: [
+    /*
+     * Match all paths except for:
+     * 1. /api routes
+     * 2. /_next (Next.js internals)
+     * 3. /_static (inside /public)
+     * 4. all root files inside /public (e.g. /favicon.ico)
+     */
+    "/((?!api/|_next/|_static/|_vercel|[\\w-]+\\.\\w+).*)",
+  ],
+};
+
+export async function proxy(req: NextRequest) {
+  const url = req.nextUrl;
+
+  // Define our root domain (ensure you set this in your environment variables on Vercel)
+  // E.g. NEXT_PUBLIC_ROOT_DOMAIN="garnishmusicproduction.com"
+  const rootDomain = process.env.NEXT_PUBLIC_ROOT_DOMAIN || "localhost:3000";
+
+  // Get hostname of request (e.g. bh.garnishmusicproduction.com, bh.localhost:3000)
+  const hostHeader = req.headers.get("host") || "";
+  const hostname = hostHeader.replace(".localhost:3000", `.${rootDomain}`);
+
+  // Get the path (e.g. /, /about, /courses)
+  const path = url.pathname;
+
+  // Check if it's a subdomain
+  if (
+    hostname.includes("---") ||
+    hostname.endsWith(`.vercel.app`) ||
+    hostname === rootDomain ||
+    hostname === `www.${rootDomain}` ||
+    hostname === "localhost:3000"
+  ) {
+    // This is the root domain (or a vercel preview deployment) -> route normally
+    return NextResponse.next();
+  }
+
+  // It IS a subdomain! (e.g. bh.garnishmusicproduction.com -> bh)
+  // We extract the subdomain name
+  const subdomain = hostname.replace(`.${rootDomain}`, "");
+
+  // Rewrite to the dynamically mapped route. 
+  // For instance, if user visits bh.garnishmusicproduction.com/about 
+  // It transparently rewrites to /sites/bh/about behind the scenes
+  // You would create your Next.js file at src/app/sites/[subdomain]/page.tsx
+  return NextResponse.rewrite(new URL(`/sites/${subdomain}${path}`, req.url));
+}
