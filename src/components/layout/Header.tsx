@@ -18,7 +18,7 @@ export default function Header() {
 
   const configuredDomain = process.env.NEXT_PUBLIC_ROOT_DOMAIN;
   const vercelUrl = process.env.NEXT_PUBLIC_VERCEL_URL;
-  const domain = configuredDomain || vercelUrl || "garnishmusicproduction.com";
+  const domain = configuredDomain || vercelUrl || "thepickleballhq.net";
   const protocol = process.env.NEXT_PUBLIC_PROTOCOL || (domain.includes("localhost") ? "http://" : "https://");
 
   const getSubdomainUrl = (sub: string, defaultProdUrl: string) => {
@@ -27,10 +27,10 @@ export default function Header() {
 
   // If the user has defined a root domain in env, or we detected vercel, use it
   const rootUrl = domain.includes("vercel.app") 
-    ? `${protocol}${domain}`
+    ? `${protocol}${domain}/`
     : (configuredDomain 
-        ? `${protocol}${domain === "garnishmusicproduction.com" ? "www." + domain : domain}`
-        : "https://www.garnishmusicproduction.com");
+        ? `${protocol}${domain === "thepickleballhq.net" ? "www." + domain : domain}/`
+        : "https://www.thepickleballhq.net/");
 
   return (
     <>
@@ -159,7 +159,7 @@ export default function Header() {
                 </div>
               </div>
 
-              <Link href="https://www.garnishmusicproduction.com/contact-map/" className="hover:text-[#E53E3E] transition-colors flex items-center h-full">CONTACT</Link>
+              <Link href="/contact-map" className="hover:text-[#E53E3E] transition-colors flex items-center h-full">CONTACT</Link>
             </div>
 
             {/* Right Group (Cart) */}

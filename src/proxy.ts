@@ -49,6 +49,14 @@ export async function proxy(req: NextRequest) {
     subdomain = parts[0];
   }
 
+  // Shared global routes that should not be scoped to a subdomain
+  const sharedRoutes = ['/contact-map', '/connect'];
+  
+  if (sharedRoutes.some(route => path.startsWith(route))) {
+    // Rewrite directly to the root-level path instead of /sites/subdomain/path
+    return NextResponse.rewrite(new URL(path, req.url));
+  }
+
   // Rewrite to the dynamically mapped route. 
   // For instance, if user visits bh.garnishmusicproduction.com/about 
   // It transparently rewrites to /sites/bh/about behind the scenes
