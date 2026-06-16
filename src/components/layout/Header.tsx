@@ -16,22 +16,21 @@ const DropdownLink = ({ href = "#", children }: { href?: string, children: React
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  // HARDCODED FOR VERCEL TESTING
-  const domain = "garnishmusicproduction.vercel.app";
-  const protocol = "https://";
+  const configuredDomain = process.env.NEXT_PUBLIC_ROOT_DOMAIN;
+  const vercelUrl = process.env.NEXT_PUBLIC_VERCEL_URL;
+  const domain = configuredDomain || vercelUrl || "garnishmusicproduction.com";
+  const protocol = process.env.NEXT_PUBLIC_PROTOCOL || (domain.includes("localhost") ? "http://" : "https://");
 
   const getSubdomainUrl = (sub: string, defaultProdUrl: string) => {
-    // Vercel DNS Workaround: If we are testing on a .vercel.app domain, we MUST use 
-    // path-based routing (/sites/bh) because Vercel blocks .vercel.app subdomains.
-    if (domain.includes("vercel.app")) {
-      return `${protocol}${domain}/sites/${sub}`;
-    }
-    // Otherwise, use standard subdomain routing (e.g., bh.localhost:3000 or bh.garnishmusicproduction.com)
     return `${protocol}${sub}.${domain}`;
   };
 
-  // HARDCODED root URL for testing
-  const rootUrl = `${protocol}${domain}`;
+  // If the user has defined a root domain in env, or we detected vercel, use it
+  const rootUrl = domain.includes("vercel.app") 
+    ? `${protocol}${domain}`
+    : (configuredDomain 
+        ? `${protocol}${domain === "garnishmusicproduction.com" ? "www." + domain : domain}`
+        : "https://www.garnishmusicproduction.com");
 
   return (
     <>
