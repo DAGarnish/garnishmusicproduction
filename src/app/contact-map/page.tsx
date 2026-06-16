@@ -5,10 +5,9 @@ import Footer from "@/components/layout/Footer";
 import { MapPin } from "lucide-react";
 
 export default function ContactMapPage() {
-  const isDev = process.env.NEXT_PUBLIC_APP_ENV === "dev";
-  const eduConnectUrl = isDev  
-    ? "http://edu.localhost:3000/connect/" 
-    : "https://edu.thepickleballhq.net/connect/";
+  // Use relative path so it automatically stays on the current subdomain 
+  // (e.g. if on bh.domain, it goes to bh.domain/connect/)
+  const eduConnectUrl = "/connect/";
 
   return (
     <div className="min-h-screen bg-white font-sans">
