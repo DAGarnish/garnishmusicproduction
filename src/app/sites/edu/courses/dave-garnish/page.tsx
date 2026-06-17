@@ -4,8 +4,50 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 
 export const metadata = {
-  title: "Dave Garnish - Garnish Music Production School",
-  description: "About Dave Garnish",
+  title: "Dave Garnish",
+  description:
+    "Dave Garnish was DJing on Don FM at age sixteen while studying music at the BRIT School in London, with the guitar being his first instrument. In 1995, he set up Blah Parties in a joiner's factory on Pitfield Street performing as Alf Garnish,",
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-snippet": -1,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+    },
+  },
+  alternates: {
+    canonical: "https://edu.garnishmusicproduction.com/courses/dave-garnish/",
+  },
+  openGraph: {
+    type: "article",
+    locale: "en_US",
+    url: "https://edu.garnishmusicproduction.com/courses/dave-garnish/",
+    siteName: "Garnish Music Production School, Worldwide",
+    title: "Dave Garnish",
+    description:
+      "Dave Garnish was DJing on Don FM at age sixteen while studying music at the BRIT School in London, with the guitar being his first instrument. In 1995, he set up Blah Parties in a joiner's factory on Pitfield Street performing as Alf Garnish,",
+    images: [
+      {
+        url: "https://edu.garnishmusicproduction.com/wp-content/uploads/sites/8/2016/09/DG-800.jpg",
+        secureUrl: "https://edu.garnishmusicproduction.com/wp-content/uploads/sites/8/2016/09/DG-800.jpg",
+        width: 800,
+        height: 800,
+        alt: "Dave Garnish",
+        type: "image/jpeg",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    site: "@garnishmusic",
+    title: "Dave Garnish",
+    description:
+      "Dave Garnish was DJing on Don FM at age sixteen while studying music at the BRIT School in London, with the guitar being his first instrument. In 1995, he set up Blah Parties in a joiner's factory on Pitfield Street performing as Alf Garnish,",
+    images: ["https://edu.garnishmusicproduction.com/wp-content/uploads/sites/8/2016/09/DG-800.jpg"],
+  },
 };
 
 export default function DaveGarnishPage() {
