@@ -57,7 +57,8 @@ export default function Header() {
                     <div className="flex flex-col gap-4">
                       <h3 className="text-white font-bold text-[15px] mb-2 uppercase tracking-wider">Information</h3>
                       <DropdownLink href="/">Home</DropdownLink>
-                      <DropdownLink href="https://edu.garnishmusicproduction.com/music/dave-garnish/">Dave Garnish</DropdownLink>
+                      <DropdownLink href="/instructors">Tutors</DropdownLink>
+                      <DropdownLink href={`${getSubdomainUrl("edu", "https://edu.garnishmusicproduction.com/")}courses/dave-garnish`}>Dave Garnish</DropdownLink>
                       <DropdownLink href="/terms">Terms</DropdownLink>
                       <DropdownLink href="/privacy-policy">Privacy Policy</DropdownLink>
                     </div>
