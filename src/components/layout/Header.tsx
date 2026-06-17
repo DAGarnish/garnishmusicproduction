@@ -56,10 +56,10 @@ export default function Header() {
                     {/* Column 1: Information */}
                     <div className="flex flex-col gap-4">
                       <h3 className="text-white font-bold text-[15px] mb-2 uppercase tracking-wider">Information</h3>
-                      <DropdownLink href="https://www.garnishmusicproduction.com">Home</DropdownLink>
+                      <DropdownLink href="/">Home</DropdownLink>
                       <DropdownLink href="https://edu.garnishmusicproduction.com/music/dave-garnish/">Dave Garnish</DropdownLink>
-                      <DropdownLink href="https://www.garnishmusicproduction.com/terms/">Terms</DropdownLink>
-                      <DropdownLink href="https://www.garnishmusicproduction.com/privacy-policy/">Privacy Policy</DropdownLink>
+                      <DropdownLink href="/terms">Terms</DropdownLink>
+                      <DropdownLink href="/privacy-policy">Privacy Policy</DropdownLink>
                     </div>
                     
                     {/* Column 2: Locations */}
