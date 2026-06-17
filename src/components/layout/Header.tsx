@@ -15,6 +15,18 @@ const DropdownLink = ({ href = "#", children }: { href?: string, children: React
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isSubdomain, setIsSubdomain] = useState(false);
+
+  React.useEffect(() => {
+    if (typeof window !== "undefined") {
+      const hostname = window.location.hostname;
+      if (hostname.includes('localhost')) {
+        setIsSubdomain(hostname !== 'localhost');
+      } else {
+        setIsSubdomain(hostname !== 'thepickleballhq.net' && hostname !== 'www.thepickleballhq.net');
+      }
+    }
+  }, []);
 
   // Auto-switch based on environment
   const isDev = process.env.NEXT_PUBLIC_APP_ENV === "dev";
@@ -57,7 +69,7 @@ export default function Header() {
                     <div className="flex flex-col gap-4">
                       <h3 className="text-white font-bold text-[15px] mb-2 uppercase tracking-wider">Information</h3>
                       <DropdownLink href="/">Home</DropdownLink>
-                      <DropdownLink href="/instructors">Tutors</DropdownLink>
+                      {!isSubdomain && <DropdownLink href="/instructors">Tutors</DropdownLink>}
                       <DropdownLink href={`${getSubdomainUrl("edu", "https://edu.garnishmusicproduction.com/")}courses/dave-garnish`}>Dave Garnish</DropdownLink>
                       <DropdownLink href="/terms">Terms</DropdownLink>
                       <DropdownLink href="/privacy-policy">Privacy Policy</DropdownLink>
