@@ -14,9 +14,13 @@ export default function AnthonyTraynorPage() {
       <div className="pt-[88px] min-h-screen bg-white">
         {/* Top Hero Image */}
         <div 
-          className="w-full h-[300px] md:h-[450px] bg-cover bg-center"
+          className="w-full h-[300px] md:h-[450px] bg-cover bg-center flex items-center justify-center"
           style={{ backgroundImage: `url('https://www.garnishmusicproduction.com/wp-content/uploads/2016/09/music-icons10.jpg')` }}
-        />
+        >
+          <div className="bg-[#E62020] text-white px-6 py-2 md:px-10 md:py-4 text-3xl md:text-5xl font-bold tracking-wider text-center max-w-[90%] -translate-y-[45px]">
+            Anthony Traynor
+          </div>
+        </div>
 
         <div className="max-w-[1000px] mx-auto px-4 sm:px-6 lg:px-8 text-[#333333] pb-24 pt-16">
           <h1 className="text-4xl font-bold mb-10 text-[#222222]">Anthony Traynor</h1>
