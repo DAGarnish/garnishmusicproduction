@@ -5,7 +5,45 @@ import Partners from "@/components/Partners";
 export const metadata = {
   title: "World-class Music Production School in Barcelona | NOW OPEN",
   description:
-    "Garnish Music Production School is now open in Barcelona. Learn music production, sound engineering & DJ courses in English in the heart of Europe.",
+    "Homepage: Learn music production, DJing & songwriting in Barcelona. Join expert-led courses & take your skills to the next level.",
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-snippet": -1,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+    },
+  },
+  alternates: {
+    canonical: "https://bcn.garnishmusicproduction.com/",
+  },
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://bcn.garnishmusicproduction.com/",
+    siteName: "Garnish Music Production School | Barcelona",
+    title: "World-class Music Production School in Barcelona | NOW OPEN",
+    description:
+      "Homepage: Learn music production, DJing & songwriting in Barcelona. Join expert-led courses & take your skills to the next level.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    site: "@garnishmusic",
+    title: "Garnish Music Production School | Barcelona",
+    description: "Music Production & DJ Courses for Everyone",
+  },
+  icons: {
+    icon: "https://bcn.garnishmusicproduction.com/wp-content/uploads/sites/30/2026/04/cropped-g-32x32.png",
+    other: [
+      {
+        rel: "msapplication-TileImage",
+        url: "https://bcn.garnishmusicproduction.com/wp-content/uploads/sites/30/2026/04/cropped-g-270x270.png",
+      },
+    ],
+  },
 };
 
 const programs = [
