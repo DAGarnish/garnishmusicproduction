@@ -12,14 +12,14 @@ export default function TermsPage() {
     <>
       <Header />
       <div className="pt-[88px] min-h-screen bg-white">
-        {/* Red Hero Banner */}
-        <div className="bg-[#E53E3E] py-16 md:py-20 mb-16 w-full md:w-1/4 text-center flex items-center justify-center md:ml-[40px]">
-          <h1 className="text-white text-4xl md:text-5xl font-bold uppercase tracking-widest">
-            Terms
-          </h1>
-        </div>
+        <div className="max-w-[800px] mx-auto px-4 sm:px-6 lg:px-8 text-[#333333] pb-24 pt-12">
+          {/* Red Hero Banner */}
+          <div className="bg-[#E53E3E] py-3 px-6 mb-12 inline-block">
+            <h1 className="text-white text-3xl font-bold uppercase tracking-widest">
+              Terms
+            </h1>
+          </div>
 
-        <div className="max-w-[800px] mx-auto px-4 sm:px-6 lg:px-8 text-[#333333] pb-24">
           <div className="space-y-8 text-[15px] leading-relaxed">
           <div>
             <h2 className="font-bold text-lg mb-2">Location of Courses:</h2>

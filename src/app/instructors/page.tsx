@@ -53,12 +53,12 @@ export default function InstructorsPage() {
       <div className="pt-[88px] min-h-screen bg-white">
         {/* Hero Section */}
         <div 
-          className="w-full h-[400px] bg-cover bg-center flex items-center justify-center relative mb-12"
+          className="w-full h-[250px] md:h-[300px] bg-cover bg-center flex items-center justify-center relative mb-12"
           style={{ backgroundImage: `url('https://www.garnishmusicproduction.com/wp-content/uploads/2016/09/music-icons10.jpg')` }}
         >
           {/* Optional dark overlay if needed for contrast, but keeping it simple first */}
-          <div className="bg-[#E53E3E] py-8 px-12 text-center inline-block">
-            <h1 className="text-white text-3xl md:text-5xl font-bold uppercase tracking-widest">
+          <div className="bg-[#E53E3E] py-4 px-8 md:py-5 md:px-10 text-center inline-block -translate-y-[30px]">
+            <h1 className="text-white text-2xl md:text-4xl font-bold uppercase tracking-widest">
               Award-winning Tutors!
             </h1>
           </div>

@@ -63,11 +63,13 @@ export default function Header() {
                 
                 {/* Mega Dropdown Container */}
                 <div className="absolute top-full left-1/2 -translate-x-[20%] w-[800px] bg-[#222222] shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 border-t border-[#E53E3E]">
-                  <div className="grid grid-cols-3 gap-8 p-10 text-left">
+                  <div className={`grid ${isSubdomain ? 'grid-cols-3' : 'grid-cols-2'} gap-8 p-10 text-left`}>
                     
-                    {/* Column 1: Information */}
+                    {/* Column 1: Information / London */}
                     <div className="flex flex-col gap-4">
-                      <h3 className="text-white font-bold text-[15px] mb-2 uppercase tracking-wider">Information</h3>
+                      <h3 className="text-white font-bold text-[15px] mb-2 uppercase tracking-wider hover:text-[#E53E3E] transition-colors cursor-pointer inline-block">
+                        {isSubdomain ? "Information" : "London"}
+                      </h3>
                       <DropdownLink href="/">Home</DropdownLink>
                       {!isSubdomain && <DropdownLink href="/instructors">Tutors</DropdownLink>}
                       <DropdownLink href={`${getSubdomainUrl("edu", "https://edu.garnishmusicproduction.com/")}courses/dave-garnish`}>Dave Garnish</DropdownLink>
@@ -77,8 +79,8 @@ export default function Header() {
                     
                     {/* Column 2: Locations */}
                     <div className="flex flex-col gap-4">
-                      <h3 className="text-white font-bold text-[15px] mb-2 uppercase tracking-wider">Locations</h3>
-                      <div className="grid grid-cols-2 gap-x-4 gap-y-4">
+                      <h3 className="text-white font-bold text-[15px] mb-2 uppercase tracking-wider hover:text-[#E53E3E] transition-colors cursor-pointer inline-block">Locations</h3>
+                      <div className="flex flex-col gap-4">
                         <DropdownLink href="https://edu.garnishmusicproduction.com/">World Home</DropdownLink>
                         <DropdownLink href="https://bcn.garnishmusicproduction.com/">BCN</DropdownLink>
                         <DropdownLink href={getSubdomainUrl("bh", "https://bh.garnishmusicproduction.com/")}>BH</DropdownLink>
@@ -97,12 +99,14 @@ export default function Header() {
                     </div>
                     
                     {/* Column 3: Other */}
-                    <div className="flex flex-col gap-4">
-                      <h3 className="text-white font-bold text-[15px] mb-2 uppercase tracking-wider">Other</h3>
-                      <DropdownLink href="https://www.garnishmusicproduction.com/bespoke-private-tuition/">Private/Bespoke</DropdownLink>
-                      <DropdownLink href="https://garn.link/discord">Online Community</DropdownLink>
-                      <DropdownLink href="https://merch.garnishmusicproduction.com/">Merch</DropdownLink>
-                    </div>
+                    {isSubdomain && (
+                      <div className="flex flex-col gap-4">
+                        <h3 className="text-white font-bold text-[15px] mb-2 uppercase tracking-wider hover:text-[#E53E3E] transition-colors cursor-pointer inline-block">Other</h3>
+                        <DropdownLink href="https://www.garnishmusicproduction.com/bespoke-private-tuition/">Private/Bespoke</DropdownLink>
+                        <DropdownLink href="https://garn.link/discord">Online Community</DropdownLink>
+                        <DropdownLink href="https://merch.garnishmusicproduction.com/">Merch</DropdownLink>
+                      </div>
+                    )}
                     
                   </div>
                 </div>
