@@ -28,16 +28,19 @@ export default function Header() {
     }
   }, []);
 
-  // Auto-switch based on environment
-  const isDev = process.env.NEXT_PUBLIC_APP_ENV === "dev";
-  const domain = isDev ? "localhost:3000" : "thepickleballhq.net";
+  // Read root domain from env — mirrors the proxy's own domain detection
+  // Dev .env.local: NEXT_PUBLIC_ROOT_DOMAIN="localhost:3000"
+  // Prod .env:      NEXT_PUBLIC_ROOT_DOMAIN="yourdomain.com"
+  const rootDomain = process.env.NEXT_PUBLIC_ROOT_DOMAIN || "localhost:3000";
+  const isDev = rootDomain.includes("localhost");
   const protocol = isDev ? "http://" : "https://";
 
-  const getSubdomainUrl = (sub: string, defaultProdUrl: string) => {
-    return `${protocol}${sub}.${domain}/`;
+  // Builds subdomain URLs: e.g. edu.localhost:3000 or edu.yourdomain.com
+  const getSubdomainUrl = (sub: string) => {
+    return `${protocol}${sub}.${rootDomain}/`;
   };
 
-  const rootUrl = isDev ? "http://localhost:3000/" : "https://www.thepickleballhq.net/";
+  const rootUrl = `${protocol}${rootDomain}/`;
 
   return (
     <>
@@ -72,7 +75,7 @@ export default function Header() {
                       </h3>
                       <DropdownLink href="/">Home</DropdownLink>
                       {!isSubdomain && <DropdownLink href="/instructors">Tutors</DropdownLink>}
-                      <DropdownLink href={`${getSubdomainUrl("edu", "https://edu.garnishmusicproduction.com/")}courses/dave-garnish`}>Dave Garnish</DropdownLink>
+                      <DropdownLink href={`${getSubdomainUrl("edu")}courses/dave-garnish`}>Dave Garnish</DropdownLink>
                       <DropdownLink href="/terms">Terms</DropdownLink>
                       <DropdownLink href="/privacy-policy">Privacy Policy</DropdownLink>
                     </div>
@@ -81,9 +84,9 @@ export default function Header() {
                     <div className="flex flex-col gap-4">
                       <h3 className="text-white font-bold text-[15px] mb-2 uppercase tracking-wider hover:text-[#E53E3E] transition-colors cursor-pointer inline-block">Locations</h3>
                       <div className="flex flex-col gap-4">
-                        <DropdownLink href="https://edu.garnishmusicproduction.com/">World Home</DropdownLink>
-                        <DropdownLink href="https://bcn.garnishmusicproduction.com/">BCN</DropdownLink>
-                        <DropdownLink href={getSubdomainUrl("bh", "https://bh.garnishmusicproduction.com/")}>BH</DropdownLink>
+                        <DropdownLink href={getSubdomainUrl("edu")}>World Home</DropdownLink>
+                        <DropdownLink href={getSubdomainUrl("bcn")}>BCN</DropdownLink>
+                        <DropdownLink href={getSubdomainUrl("bh")}>BH</DropdownLink>
                         <DropdownLink href="https://ber.garnishmusicproduction.com/">BER</DropdownLink>
                         <DropdownLink href="https://garnishmusicproduction.com/">LDN</DropdownLink>
                         <DropdownLink href="https://lis.garnishmusicproduction.com/">LIS</DropdownLink>

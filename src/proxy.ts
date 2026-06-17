@@ -16,9 +16,9 @@ export const config = {
 export async function proxy(req: NextRequest) {
   const url = req.nextUrl;
 
-  // Switch between localhost for dev and thepickleballhq.net for prod
-  const isDev = process.env.NEXT_PUBLIC_APP_ENV === "dev";
-  const rootDomain = isDev ? "localhost:3000" : "thepickleballhq.net";
+  // Read root domain from env — set NEXT_PUBLIC_ROOT_DOMAIN in .env.local (dev) or your hosting platform (prod)
+  // e.g. dev: "localhost:3000"  |  prod: "garnishmusicproduction.com" or any custom domain
+  const rootDomain = process.env.NEXT_PUBLIC_ROOT_DOMAIN || "localhost:3000";
 
   // Get hostname of request (e.g. bh.garnishmusicproduction.com, bh.localhost:3000)
   const hostHeader = req.headers.get("host") || "";
