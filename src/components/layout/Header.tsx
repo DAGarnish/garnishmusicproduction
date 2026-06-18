@@ -16,14 +16,17 @@ const DropdownLink = ({ href = "#", children }: { href?: string, children: React
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isSubdomain, setIsSubdomain] = useState(false);
+  const [isEduSubdomain, setIsEduSubdomain] = useState(false);
 
   React.useEffect(() => {
     if (typeof window !== "undefined") {
       const hostname = window.location.hostname;
       if (hostname.includes('localhost')) {
         setIsSubdomain(hostname !== 'localhost');
+        setIsEduSubdomain(hostname.startsWith('edu.'));
       } else {
         setIsSubdomain(hostname !== 'thepickleballhq.net' && hostname !== 'www.thepickleballhq.net');
+        setIsEduSubdomain(hostname.startsWith('edu.'));
       }
     }
   }, []);
@@ -76,8 +79,8 @@ export default function Header() {
                       <DropdownLink href="/">Home</DropdownLink>
                       {!isSubdomain && <DropdownLink href="/instructors">Tutors</DropdownLink>}
                       <DropdownLink href={`${getSubdomainUrl("edu")}courses/dave-garnish`}>Dave Garnish</DropdownLink>
-                      <DropdownLink href="/terms">Terms</DropdownLink>
-                      <DropdownLink href="/privacy-policy">Privacy Policy</DropdownLink>
+                      <DropdownLink href={isEduSubdomain ? "/tc" : "/terms"}>Terms</DropdownLink>
+                      <DropdownLink href={isEduSubdomain ? "/privacy-policy" : "/privacy-policy"}>Privacy Policy</DropdownLink>
                     </div>
                     
                     {/* Column 2: Locations */}
