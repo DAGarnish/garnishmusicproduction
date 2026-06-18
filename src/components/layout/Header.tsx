@@ -162,8 +162,8 @@ export default function Header() {
                       {/* Column 3: Shorter Tactical */}
                       <div className="flex flex-col gap-3 px-6 border-r border-[#333333]">
                         <h3 className="text-white font-bold text-[15px] mb-2 uppercase tracking-wider">Shorter Tactical</h3>
-                        <DropdownLink href="https://www.garnishmusicproduction.com/courses/ableton-live-course-london/">Ableton Live</DropdownLink>
-                        <DropdownLink href="https://www.garnishmusicproduction.com/courses/songwriting-course-london/">Hit Songwriting</DropdownLink>
+                        <DropdownLink href="/courses/ableton-live-course-london/">Ableton Live</DropdownLink>
+                        <DropdownLink href="/courses/songwriting-course-london/">Hit Songwriting</DropdownLink>
                         <DropdownLink href="https://www.garnishmusicproduction.com/courses/logic-pro-x-course-london/">Logic Pro</DropdownLink>
                         <DropdownLink href="https://www.musicgurus.com/learn/garnish-music-production-online-courses/">Logic Self-Paced Online</DropdownLink>
                         <DropdownLink href="https://www.garnishmusicproduction.com/courses/mixing-and-mastering-course-london/">Mixing & Mastering</DropdownLink>
@@ -203,14 +203,14 @@ export default function Header() {
                       {/* Column 3: Express Classes */}
                       <div className="flex flex-col gap-3 px-6 border-r border-[#333333]">
                         <h3 className="text-white font-bold text-[15px] mb-2 uppercase tracking-wider">Express Classes</h3>
-                        <DropdownLink href="https://www.garnishmusicproduction.com/courses/ableton-live-course-london/">Ableton Live</DropdownLink>
+                        <DropdownLink href="/courses/ableton-live-course-london/">Ableton Live</DropdownLink>
                         <DropdownLink href="https://www.garnishmusicproduction.com/courses/logic-pro-x-course-london/">Logic Pro</DropdownLink>
                         <DropdownLink href="https://www.musicgurus.com/learn/garnish-music-production-online-courses/">Logic Pro Self Paced</DropdownLink>
                         <DropdownLink>FL Studio</DropdownLink>
                         <DropdownLink>Pro Tools</DropdownLink>
                         <DropdownLink href="https://www.garnishmusicproduction.com/courses/mixing-and-mastering-course-london/">Mixing/Mixdown</DropdownLink>
                         <DropdownLink>Mastering</DropdownLink>
-                        <DropdownLink href="https://www.garnishmusicproduction.com/courses/songwriting-course-london/">Hit Songwriting Course</DropdownLink>
+                        <DropdownLink href="/courses/songwriting-course-london/">Hit Songwriting Course</DropdownLink>
                         <DropdownLink href="https://www.garnishmusicproduction.com/courses/vocal-production/">Vocal Production</DropdownLink>
                         <DropdownLink href="https://www.garnishmusicproduction.com/courses/composition/">Composition</DropdownLink>
                         <DropdownLink>Ableton Live for DJs</DropdownLink>
