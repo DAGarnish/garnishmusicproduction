@@ -5,10 +5,10 @@ import Link from "next/link";
 import { ShoppingBag, Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
-const DropdownLink = ({ href = "#", children }: { href?: string, children: React.ReactNode }) => (
-  <a href={href} className="group/link text-[#999999] hover:text-[#E53E3E] transition-colors text-[13.5px] font-normal flex items-center relative pl-[14px] -ml-[14px]">
-    <span className="text-[#E53E3E] text-[18px] leading-[0] absolute left-0 opacity-0 group-hover/link:opacity-100 transition-opacity mb-[3px]">•</span>
-    <span className="transform transition-transform duration-300 group-hover/link:translate-x-1">{children}</span>
+const DropdownLink = ({ href = "#", isActive = false, children }: { href?: string, isActive?: boolean, children: React.ReactNode }) => (
+  <a href={href} className={`group/link ${isActive ? "text-[#E53E3E]" : "text-[#999999]"} hover:text-[#E53E3E] transition-colors text-[13.5px] font-normal flex items-center relative pl-[14px] -ml-[14px]`}>
+    <span className={`text-[#E53E3E] text-[18px] leading-[0] absolute left-0 ${isActive ? "opacity-100" : "opacity-0 group-hover/link:opacity-100"} transition-opacity mb-[3px]`}>•</span>
+    <span className={`transform transition-transform duration-300 ${isActive ? "translate-x-1" : "group-hover/link:translate-x-1"}`}>{children}</span>
   </a>
 );
 
@@ -17,6 +17,7 @@ export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isSubdomain, setIsSubdomain] = useState(false);
   const [isEduSubdomain, setIsEduSubdomain] = useState(false);
+  const [currentSubdomain, setCurrentSubdomain] = useState("");
 
   React.useEffect(() => {
     if (typeof window !== "undefined") {
@@ -25,12 +26,20 @@ export default function Header() {
       // e.g. "thepickleballhq.net" now, "garnishmusicproduction.com" in future.
       const rootDomainFromEnv = process.env.NEXT_PUBLIC_ROOT_DOMAIN || "localhost:3000";
       const rootHost = rootDomainFromEnv.replace(/:\d+$/, ""); // strip port if present
+      
+      let sub = "";
       if (hostname.includes('localhost')) {
-        setIsSubdomain(hostname !== 'localhost');
+        const parts = hostname.split('.');
+        if (parts[0] !== 'localhost') sub = parts[0];
       } else {
-        setIsSubdomain(hostname !== rootHost && hostname !== `www.${rootHost}`);
+        if (hostname !== rootHost && hostname !== `www.${rootHost}`) {
+          sub = hostname.replace(`.${rootHost}`, "");
+        }
       }
-      setIsEduSubdomain(hostname.startsWith('edu.'));
+      
+      setCurrentSubdomain(sub);
+      setIsSubdomain(sub !== "");
+      setIsEduSubdomain(sub === "edu");
     }
   }, []);
 
@@ -90,20 +99,20 @@ export default function Header() {
                     <div className="flex flex-col gap-4">
                       <h3 className="text-white font-bold text-[15px] mb-2 uppercase tracking-wider hover:text-[#E53E3E] transition-colors cursor-pointer inline-block">Locations</h3>
                       <div className="flex flex-col gap-4">
-                        <DropdownLink href={getSubdomainUrl("edu")}>World Home</DropdownLink>
-                        <DropdownLink href={getSubdomainUrl("bcn")}>BCN</DropdownLink>
-                        <DropdownLink href={getSubdomainUrl("bh")}>BH</DropdownLink>
-                        <DropdownLink href="https://ber.garnishmusicproduction.com/">BER</DropdownLink>
-                        <DropdownLink href="https://garnishmusicproduction.com/">LDN</DropdownLink>
-                        <DropdownLink href="https://lis.garnishmusicproduction.com/">LIS</DropdownLink>
-                        <DropdownLink href="https://hk.garnishmusicproduction.com/">HK</DropdownLink>
-                        <DropdownLink href="https://tyo.garnishmusicproduction.com/">TYO</DropdownLink>
-                        <DropdownLink href="https://la.garnishmusicproduction.com/">LA</DropdownLink>
-                        <DropdownLink href="http://mia.garnishmusicproduction.com/">MIA</DropdownLink>
-                        <DropdownLink href="https://ny.garnishmusicproduction.com/">NY</DropdownLink>
-                        <DropdownLink href="https://nsh.garnishmusicproduction.com/">NSH</DropdownLink>
-                        <DropdownLink href="https://sea.garnishmusicproduction.com/">SEA</DropdownLink>
-                        <DropdownLink href="https://sf.garnishmusicproduction.com/">SF</DropdownLink>
+                        <DropdownLink href={getSubdomainUrl("edu")} isActive={currentSubdomain === "edu"}>World Home</DropdownLink>
+                        <DropdownLink href={getSubdomainUrl("bcn")} isActive={currentSubdomain === "bcn"}>BCN</DropdownLink>
+                        <DropdownLink href={getSubdomainUrl("bh")} isActive={currentSubdomain === "bh"}>BH</DropdownLink>
+                        <DropdownLink href={getSubdomainUrl("ber")} isActive={currentSubdomain === "ber"}>BER</DropdownLink>
+                        <DropdownLink href={rootUrl} isActive={currentSubdomain === ""}>LDN</DropdownLink>
+                        <DropdownLink href={getSubdomainUrl("lis")} isActive={currentSubdomain === "lis"}>LIS</DropdownLink>
+                        <DropdownLink href={getSubdomainUrl("hk")} isActive={currentSubdomain === "hk"}>HK</DropdownLink>
+                        <DropdownLink href={getSubdomainUrl("tyo")} isActive={currentSubdomain === "tyo"}>TYO</DropdownLink>
+                        <DropdownLink href={getSubdomainUrl("la")} isActive={currentSubdomain === "la"}>LA</DropdownLink>
+                        <DropdownLink href={getSubdomainUrl("mia")} isActive={currentSubdomain === "mia"}>MIA</DropdownLink>
+                        <DropdownLink href={getSubdomainUrl("ny")} isActive={currentSubdomain === "ny"}>NY</DropdownLink>
+                        <DropdownLink href={getSubdomainUrl("nsh")} isActive={currentSubdomain === "nsh"}>NSH</DropdownLink>
+                        <DropdownLink href={getSubdomainUrl("sea")} isActive={currentSubdomain === "sea"}>SEA</DropdownLink>
+                        <DropdownLink href={getSubdomainUrl("sf")} isActive={currentSubdomain === "sf"}>SF</DropdownLink>
                       </div>
                     </div>
                     
