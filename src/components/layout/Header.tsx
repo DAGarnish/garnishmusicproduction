@@ -18,8 +18,10 @@ export default function Header() {
   const [isSubdomain, setIsSubdomain] = useState(false);
   const [isEduSubdomain, setIsEduSubdomain] = useState(false);
   const [currentSubdomain, setCurrentSubdomain] = useState<string | null>(null);
+  const [mounted, setMounted] = useState(false);
 
   React.useEffect(() => {
+    setMounted(true);
     if (typeof window !== "undefined") {
       const hostname = window.location.hostname;
       // Use NEXT_PUBLIC_ROOT_DOMAIN so this works for any domain without code changes.
@@ -99,21 +101,21 @@ export default function Header() {
                     <div className="flex flex-col gap-4">
                       <h3 className="text-white font-bold text-[15px] mb-2 uppercase tracking-wider hover:text-[#E53E3E] transition-colors cursor-pointer inline-block">Locations</h3>
                       <div className="flex flex-col gap-4">
-                        <DropdownLink href={getSubdomainUrl("edu")} isActive={currentSubdomain === "edu"}>World Home</DropdownLink>
-                        <DropdownLink href={getSubdomainUrl("bcn")} isActive={currentSubdomain === "bcn"}>BCN</DropdownLink>
-                        <DropdownLink href={getSubdomainUrl("bh")} isActive={currentSubdomain === "bh"}>BH</DropdownLink>
-                        <DropdownLink href={getSubdomainUrl("ber")} isActive={currentSubdomain === "ber"}>BER</DropdownLink>
-                        <DropdownLink href={rootUrl} isActive={currentSubdomain === ""}>LDN</DropdownLink>
-                        <DropdownLink href={getSubdomainUrl("lis")} isActive={currentSubdomain === "lis"}>LIS</DropdownLink>
-                        <DropdownLink href={getSubdomainUrl("hk")} isActive={currentSubdomain === "hk"}>HK</DropdownLink>
-                        <DropdownLink href={getSubdomainUrl("tyo")} isActive={currentSubdomain === "tyo"}>TYO</DropdownLink>
-                        <DropdownLink href={getSubdomainUrl("la")} isActive={currentSubdomain === "la"}>LA</DropdownLink>
-                        <DropdownLink href={getSubdomainUrl("mia")} isActive={currentSubdomain === "mia"}>MIA</DropdownLink>
-                        <DropdownLink href={getSubdomainUrl("ny")} isActive={currentSubdomain === "ny"}>NY</DropdownLink>
-                        <DropdownLink href={getSubdomainUrl("nsh")} isActive={currentSubdomain === "nsh"}>NSH</DropdownLink>
-                        <DropdownLink href={getSubdomainUrl("sea")} isActive={currentSubdomain === "sea"}>SEA</DropdownLink>
-                        <DropdownLink href={getSubdomainUrl("sf")} isActive={currentSubdomain === "sf"}>SF</DropdownLink>
-                        <DropdownLink href={getSubdomainUrl("syd")} isActive={currentSubdomain === "syd"}>SYD</DropdownLink>
+                        <DropdownLink href={getSubdomainUrl("edu")} isActive={mounted && currentSubdomain === "edu"}>World Home</DropdownLink>
+                        <DropdownLink href={getSubdomainUrl("bcn")} isActive={mounted && currentSubdomain === "bcn"}>BCN</DropdownLink>
+                        <DropdownLink href={getSubdomainUrl("bh")} isActive={mounted && currentSubdomain === "bh"}>BH</DropdownLink>
+                        <DropdownLink href={getSubdomainUrl("ber")} isActive={mounted && currentSubdomain === "ber"}>BER</DropdownLink>
+                        <DropdownLink href={rootUrl} isActive={mounted && currentSubdomain === ""}>LDN</DropdownLink>
+                        <DropdownLink href={getSubdomainUrl("lis")} isActive={mounted && currentSubdomain === "lis"}>LIS</DropdownLink>
+                        <DropdownLink href={getSubdomainUrl("hk")} isActive={mounted && currentSubdomain === "hk"}>HK</DropdownLink>
+                        <DropdownLink href={getSubdomainUrl("tyo")} isActive={mounted && currentSubdomain === "tyo"}>TYO</DropdownLink>
+                        <DropdownLink href={getSubdomainUrl("la")} isActive={mounted && currentSubdomain === "la"}>LA</DropdownLink>
+                        <DropdownLink href={getSubdomainUrl("mia")} isActive={mounted && currentSubdomain === "mia"}>MIA</DropdownLink>
+                        <DropdownLink href={getSubdomainUrl("ny")} isActive={mounted && currentSubdomain === "ny"}>NY</DropdownLink>
+                        <DropdownLink href={getSubdomainUrl("nsh")} isActive={mounted && currentSubdomain === "nsh"}>NSH</DropdownLink>
+                        <DropdownLink href={getSubdomainUrl("sea")} isActive={mounted && currentSubdomain === "sea"}>SEA</DropdownLink>
+                        <DropdownLink href={getSubdomainUrl("sf")} isActive={mounted && currentSubdomain === "sf"}>SF</DropdownLink>
+                        <DropdownLink href={getSubdomainUrl("syd")} isActive={mounted && currentSubdomain === "syd"}>SYD</DropdownLink>
                       </div>
                     </div>
                     
@@ -139,54 +141,96 @@ export default function Header() {
                 
                 {/* Mega Dropdown Container */}
                 <div className="absolute top-full left-1/2 -translate-x-[40%] w-[1150px] bg-[#222222] shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 border-t border-[#E53E3E]">
-                  <div className="grid grid-cols-4 p-8 text-left">
-                    
-                    {/* Column 1: Accredited */}
-                    <div className="flex flex-col gap-3 px-6 border-r border-[#333333]">
-                      <h3 className="text-white font-bold text-[15px] mb-2 uppercase tracking-wider">Accredited</h3>
-                      <DropdownLink href="https://la.garnishmusicproduction.com/undergraduate-business-and-music/">F1 USA Visa Eligible (LA)</DropdownLink>
-                      <DropdownLink href="https://www.garnishmusicproduction.com/ba-pathway-courses/">BA (Hons) Pathways (BCN)</DropdownLink>
-                    </div>
-                    
-                    {/* Column 2: Comprehensive Programs */}
-                    <div className="flex flex-col gap-3 px-6 border-r border-[#333333]">
-                      <h3 className="text-white font-bold text-[15px] mb-2 uppercase tracking-wider">Comprehensive Programs</h3>
-                      <DropdownLink>360° Garnish Music Academy</DropdownLink>
-                      <DropdownLink href="https://www.garnishmusicproduction.com/programs/ableton-producer-program/">Electronic Music Producer Program</DropdownLink>
-                      <DropdownLink>Pop Music Producer Program</DropdownLink>
-                    </div>
+                  {!isSubdomain ? (
+                    // ROOT DOMAIN (LONDON) MENU
+                    <div className="grid grid-cols-4 p-8 text-left">
+                      {/* Column 1: Accredited */}
+                      <div className="flex flex-col gap-3 px-6 border-r border-[#333333]">
+                        <h3 className="text-white font-bold text-[15px] mb-2 uppercase tracking-wider">Accredited</h3>
+                        <DropdownLink href="https://la.garnishmusicproduction.com/undergraduate-business-and-music/">F1 USA Visa Eligible (LA)</DropdownLink>
+                        <DropdownLink href="/ba-pathway-courses/">BA (Hons) Pathways (BCN)</DropdownLink>
+                      </div>
+                      
+                      {/* Column 2: Certified */}
+                      <div className="flex flex-col gap-3 px-6 border-r border-[#333333]">
+                        <h3 className="text-white font-bold text-[15px] mb-2 uppercase tracking-wider">Certified</h3>
+                        <DropdownLink href="/academy/electronic-music-production/">Garnish Industry Diploma</DropdownLink>
+                        <DropdownLink href="/programs/ableton-producer-program/">Electronic Music Producer</DropdownLink>
+                        <DropdownLink href={`${getSubdomainUrl("edu")}international-academy/`}>International Academy</DropdownLink>
+                      </div>
 
-                    {/* Column 3: Express Classes */}
-                    <div className="flex flex-col gap-3 px-6 border-r border-[#333333]">
-                      <h3 className="text-white font-bold text-[15px] mb-2 uppercase tracking-wider">Express Classes</h3>
-                      <DropdownLink href="https://www.garnishmusicproduction.com/courses/ableton-live-course-london/">Ableton Live</DropdownLink>
-                      <DropdownLink href="https://www.garnishmusicproduction.com/courses/logic-pro-x-course-london/">Logic Pro</DropdownLink>
-                      <DropdownLink href="https://www.musicgurus.com/learn/garnish-music-production-online-courses/">Logic Pro Self Paced</DropdownLink>
-                      <DropdownLink>FL Studio</DropdownLink>
-                      <DropdownLink>Pro Tools</DropdownLink>
-                      <DropdownLink href="https://www.garnishmusicproduction.com/courses/mixing-and-mastering-course-london/">Mixing/Mixdown</DropdownLink>
-                      <DropdownLink>Mastering</DropdownLink>
-                      <DropdownLink href="https://www.garnishmusicproduction.com/courses/songwriting-course-london/">Hit Songwriting Course</DropdownLink>
-                      <DropdownLink href="https://www.garnishmusicproduction.com/courses/vocal-production/">Vocal Production</DropdownLink>
-                      <DropdownLink href="https://www.garnishmusicproduction.com/courses/composition/">Composition</DropdownLink>
-                      <DropdownLink>Ableton Live for DJs</DropdownLink>
-                      <DropdownLink>Sound Design & Synthesis in Ableton Live</DropdownLink>
-                      <DropdownLink>Rekordbox</DropdownLink>
-                      <DropdownLink>Electronic Sound Art with Arturia</DropdownLink>
-                      <DropdownLink href="https://www.garnishmusicproduction.com/courses/rhythm-section-programming/">Rhythm Section Programming</DropdownLink>
-                      <DropdownLink>Radio & Podcast</DropdownLink>
-                    </div>
-                    
-                    {/* Column 4: Others */}
-                    <div className="flex flex-col gap-3 px-6">
-                      <h3 className="text-white font-bold text-[15px] mb-2 uppercase tracking-wider">Others</h3>
-                      <DropdownLink href="https://www.garnishmusicproduction.com/bespoke-private-tuition/">Private Instruction & Tuition</DropdownLink>
-                      <DropdownLink>Electronic Music DJ Course</DropdownLink>
-                      <DropdownLink>Post Production – Mixing and Sound Design for Film and TV</DropdownLink>
-                      <DropdownLink>K-pop Hit Songwriting & Music Production</DropdownLink>
-                    </div>
+                      {/* Column 3: Shorter Tactical */}
+                      <div className="flex flex-col gap-3 px-6 border-r border-[#333333]">
+                        <h3 className="text-white font-bold text-[15px] mb-2 uppercase tracking-wider">Shorter Tactical</h3>
+                        <DropdownLink href="https://www.garnishmusicproduction.com/courses/ableton-live-course-london/">Ableton Live</DropdownLink>
+                        <DropdownLink href="https://www.garnishmusicproduction.com/courses/songwriting-course-london/">Hit Songwriting</DropdownLink>
+                        <DropdownLink href="https://www.garnishmusicproduction.com/courses/logic-pro-x-course-london/">Logic Pro</DropdownLink>
+                        <DropdownLink href="https://www.musicgurus.com/learn/garnish-music-production-online-courses/">Logic Self-Paced Online</DropdownLink>
+                        <DropdownLink href="https://www.garnishmusicproduction.com/courses/mixing-and-mastering-course-london/">Mixing & Mastering</DropdownLink>
+                        <DropdownLink href="https://www.garnishmusicproduction.com/courses/composition/">Composition</DropdownLink>
+                        <DropdownLink href="https://www.garnishmusicproduction.com/courses/rhythm-section-programming/">Rhythm Section Programming</DropdownLink>
+                        <DropdownLink href="https://www.garnishmusicproduction.com/courses/vocal-production/">Vocal Production</DropdownLink>
+                      </div>
 
-                  </div>
+                      {/* Column 4: More */}
+                      <div className="flex flex-col gap-3 px-6">
+                        <h3 className="text-white font-bold text-[15px] mb-2 uppercase tracking-wider">More</h3>
+                        <DropdownLink href="https://www.garnishmusicproduction.com/bespoke-private-tuition/">Private Tuition</DropdownLink>
+                        <DropdownLink href="https://garn.link/discord">Online Community</DropdownLink>
+                        <DropdownLink href="https://www.garnishmusicproduction.com/courses/school-summer-camp/">Summer Camp</DropdownLink>
+                        <DropdownLink href="https://edu.garnishmusicproduction.com/gift/">Gift Certificate</DropdownLink>
+                        <DropdownLink href="https://edu.garnishmusicproduction.com/live-online/">Live Online</DropdownLink>
+                      </div>
+                    </div>
+                  ) : (
+                    // SUBDOMAIN MENU
+                    <div className="grid grid-cols-4 p-8 text-left">
+                      {/* Column 1: Accredited */}
+                      <div className="flex flex-col gap-3 px-6 border-r border-[#333333]">
+                        <h3 className="text-white font-bold text-[15px] mb-2 uppercase tracking-wider">Accredited</h3>
+                        <DropdownLink href="https://la.garnishmusicproduction.com/undergraduate-business-and-music/">F1 USA Visa Eligible (LA)</DropdownLink>
+                        <DropdownLink href="/ba-pathway-courses/">BA (Hons) Pathways (BCN)</DropdownLink>
+                      </div>
+                      
+                      {/* Column 2: Comprehensive Programs */}
+                      <div className="flex flex-col gap-3 px-6 border-r border-[#333333]">
+                        <h3 className="text-white font-bold text-[15px] mb-2 uppercase tracking-wider">Comprehensive Programs</h3>
+                        <DropdownLink>360° Garnish Music Academy</DropdownLink>
+                        <DropdownLink href="/programs/ableton-producer-program/">Electronic Music Producer Program</DropdownLink>
+                        <DropdownLink>Pop Music Producer Program</DropdownLink>
+                      </div>
+
+                      {/* Column 3: Express Classes */}
+                      <div className="flex flex-col gap-3 px-6 border-r border-[#333333]">
+                        <h3 className="text-white font-bold text-[15px] mb-2 uppercase tracking-wider">Express Classes</h3>
+                        <DropdownLink href="https://www.garnishmusicproduction.com/courses/ableton-live-course-london/">Ableton Live</DropdownLink>
+                        <DropdownLink href="https://www.garnishmusicproduction.com/courses/logic-pro-x-course-london/">Logic Pro</DropdownLink>
+                        <DropdownLink href="https://www.musicgurus.com/learn/garnish-music-production-online-courses/">Logic Pro Self Paced</DropdownLink>
+                        <DropdownLink>FL Studio</DropdownLink>
+                        <DropdownLink>Pro Tools</DropdownLink>
+                        <DropdownLink href="https://www.garnishmusicproduction.com/courses/mixing-and-mastering-course-london/">Mixing/Mixdown</DropdownLink>
+                        <DropdownLink>Mastering</DropdownLink>
+                        <DropdownLink href="https://www.garnishmusicproduction.com/courses/songwriting-course-london/">Hit Songwriting Course</DropdownLink>
+                        <DropdownLink href="https://www.garnishmusicproduction.com/courses/vocal-production/">Vocal Production</DropdownLink>
+                        <DropdownLink href="https://www.garnishmusicproduction.com/courses/composition/">Composition</DropdownLink>
+                        <DropdownLink>Ableton Live for DJs</DropdownLink>
+                        <DropdownLink>Sound Design & Synthesis in Ableton Live</DropdownLink>
+                        <DropdownLink>Rekordbox</DropdownLink>
+                        <DropdownLink>Electronic Sound Art with Arturia</DropdownLink>
+                        <DropdownLink href="https://www.garnishmusicproduction.com/courses/rhythm-section-programming/">Rhythm Section Programming</DropdownLink>
+                        <DropdownLink>Radio & Podcast</DropdownLink>
+                      </div>
+                      
+                      {/* Column 4: Others */}
+                      <div className="flex flex-col gap-3 px-6">
+                        <h3 className="text-white font-bold text-[15px] mb-2 uppercase tracking-wider">Others</h3>
+                        <DropdownLink href="https://www.garnishmusicproduction.com/bespoke-private-tuition/">Private Instruction & Tuition</DropdownLink>
+                        <DropdownLink>Electronic Music DJ Course</DropdownLink>
+                        <DropdownLink>Post Production – Mixing and Sound Design for Film and TV</DropdownLink>
+                        <DropdownLink>K-pop Hit Songwriting & Music Production</DropdownLink>
+                      </div>
+                    </div>
+                  )}
                 </div>
               </div>
 

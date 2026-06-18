@@ -50,7 +50,7 @@ export async function proxy(req: NextRequest) {
   }
 
   // Shared global routes that should not be scoped to a subdomain
-  const sharedRoutes = ['/contact-map', '/connect', '/instructors'];
+  const sharedRoutes = ['/contact-map', '/connect', '/instructors', '/ba-pathway-courses', '/academy', '/programs'];
   if (sharedRoutes.some(route => path.startsWith(route))) {
     // Rewrite directly to the root-level path instead of /sites/subdomain/path
     return NextResponse.rewrite(new URL(path, req.url));
