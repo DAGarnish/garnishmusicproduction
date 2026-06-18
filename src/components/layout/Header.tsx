@@ -21,13 +21,16 @@ export default function Header() {
   React.useEffect(() => {
     if (typeof window !== "undefined") {
       const hostname = window.location.hostname;
+      // Use NEXT_PUBLIC_ROOT_DOMAIN so this works for any domain without code changes.
+      // e.g. "thepickleballhq.net" now, "garnishmusicproduction.com" in future.
+      const rootDomainFromEnv = process.env.NEXT_PUBLIC_ROOT_DOMAIN || "localhost:3000";
+      const rootHost = rootDomainFromEnv.replace(/:\d+$/, ""); // strip port if present
       if (hostname.includes('localhost')) {
         setIsSubdomain(hostname !== 'localhost');
-        setIsEduSubdomain(hostname.startsWith('edu.'));
       } else {
-        setIsSubdomain(hostname !== 'thepickleballhq.net' && hostname !== 'www.thepickleballhq.net');
-        setIsEduSubdomain(hostname.startsWith('edu.'));
+        setIsSubdomain(hostname !== rootHost && hostname !== `www.${rootHost}`);
       }
+      setIsEduSubdomain(hostname.startsWith('edu.'));
     }
   }, []);
 

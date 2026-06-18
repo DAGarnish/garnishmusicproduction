@@ -12,10 +12,16 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+// Gate indexing: staging stays invisible to Google;
+// set NEXT_PUBLIC_APP_ENV="production" at go-live to enable full indexing.
+const isProduction = process.env.NEXT_PUBLIC_APP_ENV === "production";
+
 export const metadata: Metadata = {
   title: "World-class Music Production Courses | Lessons in London",
   description: "LEARN MORE at “The World's Boutique Music Production School” — Approved by 3 DAWs. Many locations from LA to Hong Kong, and LIVE online.",
-  robots: "follow, index, max-snippet:-1, max-video-preview:-1, max-image-preview:large",
+  robots: isProduction
+    ? { index: true, follow: true, "max-snippet": -1, "max-video-preview": -1, "max-image-preview": "large" }
+    : { index: false, follow: false },
   alternates: {
     canonical: "https://www.garnishmusicproduction.com/",
   },
