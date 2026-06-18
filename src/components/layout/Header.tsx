@@ -113,6 +113,7 @@ export default function Header() {
                         <DropdownLink href={getSubdomainUrl("nsh")} isActive={currentSubdomain === "nsh"}>NSH</DropdownLink>
                         <DropdownLink href={getSubdomainUrl("sea")} isActive={currentSubdomain === "sea"}>SEA</DropdownLink>
                         <DropdownLink href={getSubdomainUrl("sf")} isActive={currentSubdomain === "sf"}>SF</DropdownLink>
+                        <DropdownLink href={getSubdomainUrl("syd")} isActive={currentSubdomain === "syd"}>SYD</DropdownLink>
                       </div>
                     </div>
                     

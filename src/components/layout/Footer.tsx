@@ -4,6 +4,35 @@ import React from "react";
 import { PlayCircle, Star, Award, ChevronRight } from "lucide-react";
 
 export default function Footer() {
+  const rootDomain = process.env.NEXT_PUBLIC_ROOT_DOMAIN || "localhost:3000";
+  const isDev = rootDomain.includes("localhost");
+  const protocol = isDev ? "http://" : "https://";
+
+  const getSubdomainUrl = (sub: string) => `${protocol}${sub}.${rootDomain}/`;
+  const rootUrl = `${protocol}${rootDomain}/`;
+
+  const usaLocations = [
+    { name: "Music Production School, Los Angeles", href: getSubdomainUrl("la") },
+    { name: "Music Production School, Miami", href: getSubdomainUrl("mia") },
+    { name: "Music Production School, Nashville", href: getSubdomainUrl("nsh") },
+    { name: "Music Production School, New York", href: getSubdomainUrl("ny") },
+    { name: "Music Production School, San Francisco", href: getSubdomainUrl("sf") },
+    { name: "Music Production School, Seattle", href: getSubdomainUrl("sea") }
+  ];
+
+  const rowLocations = [
+    { name: "Global Hub", href: getSubdomainUrl("edu") },
+    { name: "Music Production School, Barcelona", href: getSubdomainUrl("bcn") },
+    { name: "Music Production School, Bournemouth", href: getSubdomainUrl("bh") },
+    { name: "Music Production School, Berlin", href: getSubdomainUrl("ber") },
+    { name: "Music Production School, Hong Kong", href: getSubdomainUrl("hk") },
+    { name: "Music Production School, Lisbon", href: getSubdomainUrl("lis") },
+    { name: "Music Production School, London", href: rootUrl },
+    { name: "Music Production School, Marbella", href: getSubdomainUrl("mar") },
+    { name: "Music Production School, Sydney", href: getSubdomainUrl("syd") },
+    { name: "Music Production School, Tokyo", href: getSubdomainUrl("tyo") }
+  ];
+
   return (
     <>
       {/* Main Footer */}
@@ -46,16 +75,9 @@ export default function Footer() {
               <div className="w-full h-[1px] bg-white/10 mb-2"></div>
               
               <div className="flex flex-col">
-                {[
-                  "Music Production School, Los Angeles",
-                  "Music Production School, Miami",
-                  "Music Production School, Nashville",
-                  "Music Production School, New York",
-                  "Music Production School, San Francisco",
-                  "Music Production School, Seattle"
-                ].map((location, i) => (
-                  <a key={i} href="#" className="py-3.5 border-b border-white/5 text-gray-300 hover:text-[#E53E3E] transition-colors text-[12px] font-semibold uppercase tracking-wider">
-                    {location}
+                {usaLocations.map((loc, i) => (
+                  <a key={i} href={loc.href} className="py-3.5 border-b border-white/5 text-gray-300 hover:text-[#E53E3E] transition-colors text-[12px] font-semibold uppercase tracking-wider">
+                    {loc.name}
                   </a>
                 ))}
               </div>
@@ -67,20 +89,9 @@ export default function Footer() {
               <div className="w-full h-[1px] bg-white/10 mb-2"></div>
               
               <div className="flex flex-col">
-                {[
-                  "Global Hub",
-                  "Music Production School, Barcelona",
-                  "Music Production School, Bournemouth",
-                  "Music Production School, Berlin",
-                  "Music Production School, Hong Kong",
-                  "Music Production School, Lisbon",
-                  "Music Production School, London",
-                  "Music Production School, Marbella",
-                  "Music Production School, Sydney",
-                  "Music Production School, Tokyo"
-                ].map((location, i) => (
-                  <a key={i} href="#" className="py-3.5 border-b border-white/5 text-gray-300 hover:text-[#E53E3E] transition-colors text-[12px] font-semibold uppercase tracking-wider">
-                    {location}
+                {rowLocations.map((loc, i) => (
+                  <a key={i} href={loc.href} className="py-3.5 border-b border-white/5 text-gray-300 hover:text-[#E53E3E] transition-colors text-[12px] font-semibold uppercase tracking-wider">
+                    {loc.name}
                   </a>
                 ))}
               </div>
