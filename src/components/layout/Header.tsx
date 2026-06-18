@@ -17,7 +17,7 @@ export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isSubdomain, setIsSubdomain] = useState(false);
   const [isEduSubdomain, setIsEduSubdomain] = useState(false);
-  const [currentSubdomain, setCurrentSubdomain] = useState("");
+  const [currentSubdomain, setCurrentSubdomain] = useState<string | null>(null);
 
   React.useEffect(() => {
     if (typeof window !== "undefined") {
