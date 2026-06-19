@@ -36,7 +36,7 @@ export default function AbletonLiveCourseLondonPage() {
       
       {/* Hero Section */}
       <section 
-        className="relative w-full h-[500px] bg-[#111111] pt-[88px] flex items-center justify-center bg-cover bg-center bg-no-repeat"
+        className="relative w-full h-[650px] md:h-[750px] bg-[#111111] pt-[88px] flex items-center justify-center bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: `url('https://www.garnishmusicproduction.com/wp-content/uploads/2018/03/Garnish10.jpg')` }}
       >
         <div className="absolute inset-0 bg-black/40"></div>

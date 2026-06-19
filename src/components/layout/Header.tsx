@@ -164,22 +164,22 @@ export default function Header() {
                         <h3 className="text-white font-bold text-[15px] mb-2 uppercase tracking-wider">Shorter Tactical</h3>
                         <DropdownLink href="/courses/ableton-live-course-london/">Ableton Live</DropdownLink>
                         <DropdownLink href="/courses/songwriting-course-london/">Hit Songwriting</DropdownLink>
-                        <DropdownLink href="https://www.garnishmusicproduction.com/courses/logic-pro-x-course-london/">Logic Pro</DropdownLink>
+                        <DropdownLink href="/courses/logic-pro-x-course-london/">Logic Pro</DropdownLink>
                         <DropdownLink href="https://www.musicgurus.com/learn/garnish-music-production-online-courses/">Logic Self-Paced Online</DropdownLink>
-                        <DropdownLink href="https://www.garnishmusicproduction.com/courses/mixing-and-mastering-course-london/">Mixing & Mastering</DropdownLink>
-                        <DropdownLink href="https://www.garnishmusicproduction.com/courses/composition/">Composition</DropdownLink>
-                        <DropdownLink href="https://www.garnishmusicproduction.com/courses/rhythm-section-programming/">Rhythm Section Programming</DropdownLink>
-                        <DropdownLink href="https://www.garnishmusicproduction.com/courses/vocal-production/">Vocal Production</DropdownLink>
+                        <DropdownLink href="/courses/mixing-and-mastering-course-london/">Mixing & Mastering</DropdownLink>
+                        <DropdownLink href="/courses/composition/">Composition</DropdownLink>
+                        <DropdownLink href="/courses/rhythm-section-programming/">Rhythm Section Programming</DropdownLink>
+                        <DropdownLink href="/courses/vocal-production/">Vocal Production</DropdownLink>
                       </div>
 
                       {/* Column 4: More */}
                       <div className="flex flex-col gap-3 px-6">
                         <h3 className="text-white font-bold text-[15px] mb-2 uppercase tracking-wider">More</h3>
-                        <DropdownLink href="https://www.garnishmusicproduction.com/bespoke-private-tuition/">Private Tuition</DropdownLink>
+                        <DropdownLink href="/bespoke-private-tuition/">Private Tuition</DropdownLink>
                         <DropdownLink href="https://garn.link/discord">Online Community</DropdownLink>
-                        <DropdownLink href="https://www.garnishmusicproduction.com/courses/school-summer-camp/">Summer Camp</DropdownLink>
-                        <DropdownLink href="https://edu.garnishmusicproduction.com/gift/">Gift Certificate</DropdownLink>
-                        <DropdownLink href="https://edu.garnishmusicproduction.com/live-online/">Live Online</DropdownLink>
+                        <DropdownLink href="/courses/school-summer-camp/">Summer Camp</DropdownLink>
+                        <DropdownLink href={`${getSubdomainUrl("edu")}gift/`}>Gift Certificate</DropdownLink>
+                        <DropdownLink href={`${getSubdomainUrl("edu")}online-music-production/`}>Live Online</DropdownLink>
                       </div>
                     </div>
                   ) : (
@@ -204,27 +204,27 @@ export default function Header() {
                       <div className="flex flex-col gap-3 px-6 border-r border-[#333333]">
                         <h3 className="text-white font-bold text-[15px] mb-2 uppercase tracking-wider">Express Classes</h3>
                         <DropdownLink href="/courses/ableton-live-course-london/">Ableton Live</DropdownLink>
-                        <DropdownLink href="https://www.garnishmusicproduction.com/courses/logic-pro-x-course-london/">Logic Pro</DropdownLink>
+                        <DropdownLink href="/courses/logic-pro-x-course-london/">Logic Pro</DropdownLink>
                         <DropdownLink href="https://www.musicgurus.com/learn/garnish-music-production-online-courses/">Logic Pro Self Paced</DropdownLink>
                         <DropdownLink>FL Studio</DropdownLink>
                         <DropdownLink>Pro Tools</DropdownLink>
-                        <DropdownLink href="https://www.garnishmusicproduction.com/courses/mixing-and-mastering-course-london/">Mixing/Mixdown</DropdownLink>
+                        <DropdownLink href="/courses/mixing-and-mastering-course-london/">Mixing/Mixdown</DropdownLink>
                         <DropdownLink>Mastering</DropdownLink>
                         <DropdownLink href="/courses/songwriting-course-london/">Hit Songwriting Course</DropdownLink>
-                        <DropdownLink href="https://www.garnishmusicproduction.com/courses/vocal-production/">Vocal Production</DropdownLink>
-                        <DropdownLink href="https://www.garnishmusicproduction.com/courses/composition/">Composition</DropdownLink>
+                        <DropdownLink href="/courses/vocal-production/">Vocal Production</DropdownLink>
+                        <DropdownLink href="/courses/composition/">Composition</DropdownLink>
                         <DropdownLink>Ableton Live for DJs</DropdownLink>
                         <DropdownLink>Sound Design & Synthesis in Ableton Live</DropdownLink>
                         <DropdownLink>Rekordbox</DropdownLink>
                         <DropdownLink>Electronic Sound Art with Arturia</DropdownLink>
-                        <DropdownLink href="https://www.garnishmusicproduction.com/courses/rhythm-section-programming/">Rhythm Section Programming</DropdownLink>
+                        <DropdownLink href="/courses/rhythm-section-programming/">Rhythm Section Programming</DropdownLink>
                         <DropdownLink>Radio & Podcast</DropdownLink>
                       </div>
                       
                       {/* Column 4: Others */}
                       <div className="flex flex-col gap-3 px-6">
                         <h3 className="text-white font-bold text-[15px] mb-2 uppercase tracking-wider">Others</h3>
-                        <DropdownLink href="https://www.garnishmusicproduction.com/bespoke-private-tuition/">Private Instruction & Tuition</DropdownLink>
+                        <DropdownLink href="/bespoke-private-tuition/">Private Instruction & Tuition</DropdownLink>
                         <DropdownLink>Electronic Music DJ Course</DropdownLink>
                         <DropdownLink>Post Production – Mixing and Sound Design for Film and TV</DropdownLink>
                         <DropdownLink>K-pop Hit Songwriting & Music Production</DropdownLink>

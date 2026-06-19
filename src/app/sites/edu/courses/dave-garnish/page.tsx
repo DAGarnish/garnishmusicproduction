@@ -57,7 +57,7 @@ export default function DaveGarnishPage() {
       <div className="pt-[88px] min-h-screen bg-white">
         {/* Top Hero Image */}
         <div 
-          className="w-full h-[500px] md:h-[650px] bg-cover bg-center"
+          className="w-full h-[650px] md:h-[800px] bg-cover bg-center"
           style={{ backgroundImage: `url('https://edu.garnishmusicproduction.com/wp-content/uploads/sites/8/2016/09/Dave-Air-Teenager-Calc-Test-1.jpeg')` }}
         />
 
