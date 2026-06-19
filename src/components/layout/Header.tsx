@@ -195,9 +195,9 @@ export default function Header() {
                       {/* Column 2: Comprehensive Programs */}
                       <div className="flex flex-col gap-3 px-6 border-r border-[#333333]">
                         <h3 className="text-white font-bold text-[15px] mb-2 uppercase tracking-wider">Comprehensive Programs</h3>
-                        <DropdownLink>360° Garnish Music Academy</DropdownLink>
-                        <DropdownLink href="/programs/ableton-producer-program/">Electronic Music Producer Program</DropdownLink>
-                        <DropdownLink>Pop Music Producer Program</DropdownLink>
+                        <DropdownLink href="/academy/">360° Garnish Music Academy</DropdownLink>
+                        <DropdownLink href="/programs/ableton-producer/">Electronic Music Producer Program</DropdownLink>
+                        <DropdownLink href="/programs/logic-producer/">Pop Music Producer Program</DropdownLink>
                       </div>
 
                       {/* Column 3: Express Classes */}

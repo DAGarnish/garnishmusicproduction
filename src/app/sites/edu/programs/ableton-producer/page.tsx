@@ -15,7 +15,7 @@ export default function AbletonProducerPage() {
         className="relative w-full h-[250px] mt-[88px] flex items-center justify-center bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: `url('https://edu.garnishmusicproduction.com/wp-content/uploads/sites/8/2021/10/Ableton-Live-10-typewriter-scaled.jpg')` }}
       >
-        <div className="relative z-10 w-[90%] md:w-[65%] text-center">
+        <div className="relative z-10 w-[65%] text-center">
           <h1 className="text-2xl md:text-3xl lg:text-[40px] font-bold text-white bg-[#E53E3E] py-4 px-6 uppercase tracking-wider shadow-lg">
             Certified Electronic Music Producer Program
           </h1>
@@ -30,7 +30,7 @@ export default function AbletonProducerPage() {
           className="w-full bg-cover bg-center bg-no-repeat py-20 px-4"
           style={{ backgroundImage: `url('https://edu.garnishmusicproduction.com/wp-content/uploads/sites/8/2025/03/image-scaled.jpg')` }}
         >
-          <div className="w-[90%] md:w-[70%] mx-auto bg-white/90 backdrop-blur-sm rounded-[24px] shadow-2xl p-8 md:p-14 border border-[#B7B7B7]">
+          <div className="w-[90%] md:w-[70%] mx-auto bg-white/90 backdrop-blur-sm rounded-[24px] shadow-2xl p-8 md:p-14">
             <div className="text-center mb-8">
               <h2 className="text-[32px] md:text-[38px] font-bold text-[#222] leading-tight">
                 Certified Ableton Music Producer Program
@@ -71,7 +71,7 @@ export default function AbletonProducerPage() {
           className="w-full bg-cover bg-center bg-no-repeat py-20 px-4"
           style={{ backgroundImage: `url('https://edu.garnishmusicproduction.com/wp-content/uploads/sites/8/2025/02/3.jpg')` }}
         >
-          <div className="w-[90%] md:w-[70%] mx-auto bg-white/90 backdrop-blur-sm rounded-[24px] shadow-2xl p-8 md:p-14 text-center border border-[#B7B7B7]">
+          <div className="w-[90%] md:w-[70%] mx-auto bg-white/90 backdrop-blur-sm rounded-[24px] shadow-2xl p-8 md:p-14 text-center">
             
             <h3 className="text-xl md:text-[22px] font-bold text-[#222] mb-6 leading-relaxed">
               Ableton certified; Apple authorized; world-class facilities; superior roster of instructors.
