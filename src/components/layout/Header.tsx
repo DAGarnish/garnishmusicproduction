@@ -123,7 +123,7 @@ export default function Header() {
                     {isSubdomain && (
                       <div className="flex flex-col gap-4">
                         <h3 className="text-white font-bold text-[15px] mb-2 uppercase tracking-wider hover:text-[#E53E3E] transition-colors cursor-pointer inline-block">Other</h3>
-                        <DropdownLink href="https://www.garnishmusicproduction.com/bespoke-private-tuition/">Private/Bespoke</DropdownLink>
+                        <DropdownLink href="/courses/private-instruction/">Private/Bespoke</DropdownLink>
                         <DropdownLink href="https://garn.link/discord">Online Community</DropdownLink>
                         <DropdownLink href="https://merch.garnishmusicproduction.com/">Merch</DropdownLink>
                       </div>
