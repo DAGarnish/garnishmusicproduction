@@ -147,7 +147,7 @@ export default function Header() {
                       {/* Column 1: Accredited */}
                       <div className="flex flex-col gap-3 px-6 border-r border-[#333333]">
                         <h3 className="text-white font-bold text-[15px] mb-2 uppercase tracking-wider">Accredited</h3>
-                        <DropdownLink href="https://la.garnishmusicproduction.com/undergraduate-business-and-music/">F1 USA Visa Eligible (LA)</DropdownLink>
+                        <DropdownLink href={`${getSubdomainUrl("la")}undergraduate-business-and-music/`}>F1 USA Visa Eligible (LA)</DropdownLink>
                         <DropdownLink href="/ba-pathway-courses/">BA (Hons) Pathways (BCN)</DropdownLink>
                       </div>
                       
@@ -188,7 +188,7 @@ export default function Header() {
                       {/* Column 1: Accredited */}
                       <div className="flex flex-col gap-3 px-6 border-r border-[#333333]">
                         <h3 className="text-white font-bold text-[15px] mb-2 uppercase tracking-wider">Accredited</h3>
-                        <DropdownLink href="https://la.garnishmusicproduction.com/undergraduate-business-and-music/">F1 USA Visa Eligible (LA)</DropdownLink>
+                        <DropdownLink href={`${getSubdomainUrl("la")}undergraduate-business-and-music/`}>F1 USA Visa Eligible (LA)</DropdownLink>
                         <DropdownLink href="/ba-pathway-courses/">BA (Hons) Pathways (BCN)</DropdownLink>
                       </div>
                       
@@ -206,28 +206,28 @@ export default function Header() {
                         <DropdownLink href="/courses/ableton-live-course-london/">Ableton Live</DropdownLink>
                         <DropdownLink href="/courses/logic-pro-x-course-london/">Logic Pro</DropdownLink>
                         <DropdownLink href="https://www.musicgurus.com/learn/garnish-music-production-online-courses/">Logic Pro Self Paced</DropdownLink>
-                        <DropdownLink>FL Studio</DropdownLink>
-                        <DropdownLink>Pro Tools</DropdownLink>
+                        <DropdownLink href="/courses/fl-studio/">FL Studio</DropdownLink>
+                        <DropdownLink href="/courses/pro-tools/">Pro Tools</DropdownLink>
                         <DropdownLink href="/courses/mixing-and-mastering-course-london/">Mixing/Mixdown</DropdownLink>
-                        <DropdownLink>Mastering</DropdownLink>
+                        <DropdownLink href="/courses/mastering/">Mastering</DropdownLink>
                         <DropdownLink href="/courses/songwriting-course-london/">Hit Songwriting Course</DropdownLink>
                         <DropdownLink href="/courses/vocal-production/">Vocal Production</DropdownLink>
                         <DropdownLink href="/courses/composition/">Composition</DropdownLink>
-                        <DropdownLink>Ableton Live for DJs</DropdownLink>
-                        <DropdownLink>Sound Design & Synthesis in Ableton Live</DropdownLink>
-                        <DropdownLink>Rekordbox</DropdownLink>
-                        <DropdownLink>Electronic Sound Art with Arturia</DropdownLink>
+                        <DropdownLink href="/courses/ableton-live-djs/">Ableton Live for DJs</DropdownLink>
+                        <DropdownLink href="/courses/sound-design-synthesis-ableton/">Sound Design & Synthesis in Ableton Live</DropdownLink>
+                        <DropdownLink href="/courses/rekordbox/">Rekordbox</DropdownLink>
+                        <DropdownLink href="/courses/electronic-sound-art/">Electronic Sound Art with Arturia</DropdownLink>
                         <DropdownLink href="/courses/rhythm-section-programming/">Rhythm Section Programming</DropdownLink>
-                        <DropdownLink>Radio & Podcast</DropdownLink>
+                        <DropdownLink href="/courses/radio-podcast-course/">Radio & Podcast</DropdownLink>
                       </div>
                       
                       {/* Column 4: Others */}
                       <div className="flex flex-col gap-3 px-6">
                         <h3 className="text-white font-bold text-[15px] mb-2 uppercase tracking-wider">Others</h3>
                         <DropdownLink href="/bespoke-private-tuition/">Private Instruction & Tuition</DropdownLink>
-                        <DropdownLink>Electronic Music DJ Course</DropdownLink>
-                        <DropdownLink>Post Production – Mixing and Sound Design for Film and TV</DropdownLink>
-                        <DropdownLink>K-pop Hit Songwriting & Music Production</DropdownLink>
+                        <DropdownLink href="/courses/electronic-dj-course/">Electronic Music DJ Course</DropdownLink>
+                        <DropdownLink href="/courses/mixing-sound-design-film-tv/">Post Production – Mixing and Sound Design for Film and TV</DropdownLink>
+                        <DropdownLink href="/courses/k-pop-hit-songwriting-class/">K-pop Hit Songwriting & Music Production</DropdownLink>
                       </div>
                     </div>
                   )}
